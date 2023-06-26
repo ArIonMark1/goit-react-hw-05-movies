@@ -1,8 +1,9 @@
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { PropagateLoader } from 'react-spinners';
 import { handleRequestById } from 'components/api_request';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense } from 'react';
 import './MovieDetails.scss';
 
 export default function MovieDetails() {
@@ -60,7 +61,20 @@ export default function MovieDetails() {
           </li>
         </ul>
       </div>
-      <Outlet />
+      <Suspense
+        fallback={
+          <PropagateLoader
+            color={'#ffaa06'}
+            loading
+            size={15}
+            speedMultiplier={1}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
   );
 }

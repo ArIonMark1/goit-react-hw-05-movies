@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import './HomePage.scss';
+import { Suspense } from 'react';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 // рендеримо шапку та компоненти нащадки
 export default function HomePage() {
   return (
@@ -21,7 +23,20 @@ export default function HomePage() {
 
       <main>
         <section className="container">
-          <Outlet />
+          <Suspense
+            fallback={
+              <PropagateLoader
+                color={'#ffaa06'}
+                loading
+                size={15}
+                speedMultiplier={1}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            }
+          >
+            <Outlet />
+          </Suspense>
         </section>
       </main>
       <footer></footer>

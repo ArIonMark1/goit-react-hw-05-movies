@@ -5,12 +5,10 @@ import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 export default function Movies() {
   // робота з даними інпуту
   const [filter, setFilter] = useSearchParams('');
-  // take active parameter from url
-  // let movieName = filter.get('movie') ?? '';
+
   // дані які прийшли по запиту
   const [responce, setResponce] = useState([]);
   const location = useLocation();
-  // console.log('location: ', location);
   // ********************************
   useEffect(() => {
     if (filter === '') return;
@@ -45,15 +43,13 @@ export default function Movies() {
         <button type="submit">Search</button>
       </form>
       <ul>
-        {responce &&
-          responce.map(film => (
-            <li key={film.id}>
-              {/* movie.title ? movie.title : movie.name */}
-              <NavLink to={`${film.id}`} state={{ from: location }}>
-                {film.title ? film.title : film.name}
-              </NavLink>
-            </li>
-          ))}
+        {responce.map(film => (
+          <li key={film.id}>
+            <NavLink to={`${film.id}`} state={{ from: location }}>
+              {film.title ? film.title : film.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </>
   );

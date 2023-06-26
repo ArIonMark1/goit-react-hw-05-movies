@@ -1,12 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import HomePage from '../pages/HomePage/HomePage';
-import MovieList from './MovieList/MovieList';
-import MovieDetails from './MovieDetails/MovieDetails';
-import Movies from 'Movies/Movies';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+import { lazy } from 'react';
 import './App.scss';
+
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const MovieList = lazy(() => import('./MovieList/MovieList'));
+const Movies = lazy(() => import('./Movies/Movies'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const NotExistPage = lazy(() => import('../pages/NotExistPage/NotExistPage'));
 
 export const App = () => {
   return (
@@ -19,18 +21,14 @@ export const App = () => {
           <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="movies" element={<Movies />}>
+          <Route path=":movieId" element={<MovieDetails />}>
+            <Route path="casts" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
           <Route />
         </Route>
       </Route>
-      <Route
-        path="*"
-        element={
-          <div>
-            <p>This page does not Exists. </p>
-            <NavLink to="/">Home</NavLink>
-          </div>
-        }
-      />
+      <Route path="*" element={<NotExistPage />} />
     </Routes>
   );
 };
