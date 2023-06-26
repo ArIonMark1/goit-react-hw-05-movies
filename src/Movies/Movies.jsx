@@ -10,7 +10,7 @@ export default function Movies() {
   // дані які прийшли по запиту
   const [responce, setResponce] = useState([]);
   const location = useLocation();
-  console.log('location: ', location);
+  // console.log('location: ', location);
   // ********************************
   useEffect(() => {
     if (filter === '') return;

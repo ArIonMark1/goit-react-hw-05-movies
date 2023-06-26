@@ -14,7 +14,13 @@ export default function Reviews() {
     };
     receiveReview();
   }, [movieId]);
-
+  if (reviews.length === 0) {
+    return (
+      <div>
+        <p>We don`t have any reviews for this movie.</p>
+      </div>
+    );
+  }
   return (
     <div>
       <ul>

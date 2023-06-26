@@ -10,8 +10,8 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/');
-  console.log('location from movie details: ', location);
-  console.log('Saved location: ', backLinkLocation);
+  // console.log('location from movie details: ', location);
+  // console.log('Saved location: ', backLinkLocation);
   //
   useEffect(() => {
     const getMovieDetails = async () => {

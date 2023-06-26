@@ -51,18 +51,19 @@ export const handleMovieSearchList = async fTitle => {
   returnCustomError(request);
 };
 
+// #################################################################
 export const handleMovieReview = async movieId => {
   // https://api.themoviedb.org/3/movie/{movie_id}/reviews
   const request = await axios.get(`${url}movie/${movieId}/reviews`, {
     params: { api_key: API_KEY },
   });
-  console.log('Data: ', request.data);
   if (request.status === 200) {
     return request.data;
   }
   returnCustomError(request);
 };
 
+// #################################################################
 export const handleMovieCredits = async movieId => {
   // https://api.themoviedb.org/3/movie/{movie_id}/credits
   const request = await axios.get(`${url}movie/${movieId}/credits`, {
