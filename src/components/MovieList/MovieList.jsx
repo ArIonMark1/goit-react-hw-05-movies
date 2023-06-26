@@ -16,7 +16,7 @@ export default function MovieList() {
     };
     onLoadMovies();
   }, []);
-  // console.log(trendMovies);
+  //
   return (
     <>
       <h2>Trending today</h2>

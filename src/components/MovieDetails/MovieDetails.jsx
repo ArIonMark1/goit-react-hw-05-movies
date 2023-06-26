@@ -10,8 +10,6 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/');
-  // console.log('location from movie details: ', location);
-  // console.log('Saved location: ', backLinkLocation);
   //
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -21,7 +19,7 @@ export default function MovieDetails() {
       .then(receiveData => setMovie(prevMovie => ({ ...receiveData })))
       .catch(console.error);
   }, [movieId]);
-  setTimeout(() => {}, 0);
+  //
   const movieImage = movie.poster_path
     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
     : `https://via.placeholder.com/200x300`;

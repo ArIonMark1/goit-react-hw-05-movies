@@ -23,7 +23,6 @@ export const handleRequestPopular = async () => {
 // #################################################################
 export const handleRequestById = async id => {
   // Get the top level details of a movie by ID.
-
   const request = await axios.get(`${url}movie/${id}`, {
     params: {
       api_key: API_KEY,

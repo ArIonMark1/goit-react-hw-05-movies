@@ -14,7 +14,6 @@ export default function Cast() {
       .then(team => setCharacters(prevCharacters => [...team.cast]))
       .catch(console.error);
   }, [movieId]);
-  console.log(characters);
   //
   const characterImg = `https://image.tmdb.org/t/p/w200`;
 
