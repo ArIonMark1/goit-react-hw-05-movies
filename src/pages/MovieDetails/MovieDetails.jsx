@@ -63,20 +63,22 @@ export default function MovieDetails() {
           </li>
         </ul>
       </div>
-      <Suspense
-        fallback={
-          <PropagateLoader
-            color={'#ffaa06'}
-            loading
-            size={15}
-            speedMultiplier={1}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        }
-      >
-        <Outlet />
-      </Suspense>
+      <div className="childConponents">
+        <Suspense
+          fallback={
+            <PropagateLoader
+              color={'#ffaa06'}
+              loading
+              size={15}
+              speedMultiplier={1}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          }
+        >
+          <Outlet />
+        </Suspense>
+      </div>
     </>
   );
 }

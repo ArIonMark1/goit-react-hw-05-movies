@@ -18,9 +18,6 @@ export default function Cast() {
   //
   const characterImg = `https://image.tmdb.org/t/p/w200`;
 
-  if (characters.length === 0) {
-    return <div>Movie without characters! Unbelievably!!!</div>;
-  }
   return (
     <ul className="listActors">
       {characters.map(character => (
