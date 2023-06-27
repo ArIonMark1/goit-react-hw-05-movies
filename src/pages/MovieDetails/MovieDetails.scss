@@ -1,0 +1,23 @@
+.backButton {
+    display: inline-block;
+    // margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    text-decoration: none;  
+    padding: 5px 20px;
+    border-radius: 4px;
+    color: black;
+    font-weight: 500;
+}
+.moviePoster {
+    box-shadow: inset 0 -2em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+.navInfo{
+    padding: 0;
+    li {
+        padding: 0;
+        margin: 0;
+    }
+}

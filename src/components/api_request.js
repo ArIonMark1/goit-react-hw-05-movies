@@ -37,13 +37,15 @@ export const handleRequestById = async id => {
 // #################################################################
 export const handleMovieSearchList = async fTitle => {
   // Search for movies by their original, translated and alternative titles.
-  const request = await axios.get(`${url}search/movie`, {
-    params: {
-      api_key: API_KEY,
-      query: fTitle,
-      language: 'en-US',
-    },
-  });
+  const BASE_URL = `https://api.themoviedb.org/3/search/movie`;
+
+  const params = {
+    api_key: API_KEY,
+    query: `${fTitle}`,
+    // page: 1,
+  };
+
+  const request = await axios.get(BASE_URL, { params });
   if (request.status === 200) {
     return request.data;
   }

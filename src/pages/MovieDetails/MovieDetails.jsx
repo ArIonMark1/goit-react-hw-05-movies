@@ -18,7 +18,7 @@ export default function MovieDetails() {
     };
     getMovieDetails()
       .then(receiveData => setMovie(prevMovie => ({ ...receiveData })))
-      .catch(console.error);
+      .catch(err => alert(err.message));
   }, [movieId]);
   //
   const movieImage = movie.poster_path
@@ -34,7 +34,9 @@ export default function MovieDetails() {
         <span>{'<-'}</span> <span>Go back</span>
       </NavLink>
       <div>
-        {movieImage && <img src={movieImage} alt={movie.title} />}
+        {movieImage && (
+          <img className="moviePoster" src={movieImage} alt={movie.title} />
+        )}
 
         <div>
           {movie.title && (
@@ -52,7 +54,7 @@ export default function MovieDetails() {
       </div>
       <div>
         <h3>Additional information</h3>
-        <ul>
+        <ul className="navInfo">
           <li>
             <NavLink to="casts">Cast</NavLink>
           </li>
