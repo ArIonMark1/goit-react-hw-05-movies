@@ -1,45 +1,41 @@
-import { NavLink, Outlet } from 'react-router-dom';
+// import { NavLink, Outlet } from 'react-router-dom';
+// import MovieList from 'components/MovieList/MovieList';
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { handleRequestPopular } from 'components/api_request';
 import './HomePage.scss';
-import { Suspense } from 'react';
-import PropagateLoader from 'react-spinners/PropagateLoader';
-// рендеримо шапку та компоненти нащадки
+
 export default function HomePage() {
+  const [trendMovies, setTrendMovies] = useState([]);
+  const location = useLocation();
+
+  // ****************************
+  useEffect(() => {
+    const onLoadMovies = async () => {
+      await handleRequestPopular()
+        .then(reqObj => {
+          setTrendMovies(prevTrendMovies => [...reqObj.results]);
+        })
+        .catch(err => alert(err.message));
+    };
+    onLoadMovies();
+  }, []);
+  // ****************************
+
   return (
     <>
-      <section className="container">
-        <header>
-          <nav>
-            <ul className="navigation">
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/movies">Movies</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </section>
+      <h2>Trending today</h2>
 
-      <main>
-        <section className="container">
-          <Suspense
-            fallback={
-              <PropagateLoader
-                color={'#ffaa06'}
-                loading
-                size={15}
-                speedMultiplier={1}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
-            }
-          >
-            <Outlet />
-          </Suspense>
-        </section>
-      </main>
-      <footer></footer>
+      <ul>
+        {trendMovies.map(movie => (
+          <li key={movie.id}>
+            <NavLink to={`movies/${movie.id}`} state={{ from: location }}>
+              <span>{movie.media_type}</span>:
+              <span> {movie.title ? movie.title : movie.name}</span>
+            </NavLink>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

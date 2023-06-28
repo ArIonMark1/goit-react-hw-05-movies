@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { handleMovieSearchList } from 'components/api_request';
 import { NavLink } from 'react-router-dom';
+import { handleMovieSearchList } from 'components/api_request';
 
 export default function FilteredMovieList({ request, isData, path }) {
   // дані які прийшли по запиту
@@ -18,13 +18,6 @@ export default function FilteredMovieList({ request, isData, path }) {
     receivedData();
   }, [request, isData]);
   // ********************************
-  if (responce.length === 0 && isData) {
-    return (
-      <div>
-        <p>Sorry, there is no data for the request.</p>
-      </div>
-    );
-  }
   return (
     <ul>
       {responce.map(film => (

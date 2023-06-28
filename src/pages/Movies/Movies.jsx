@@ -1,5 +1,4 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
-
 import FilteredMovieList from 'components/FIlteredMovieList/FIlteredMovieList';
 import { useState } from 'react';
 

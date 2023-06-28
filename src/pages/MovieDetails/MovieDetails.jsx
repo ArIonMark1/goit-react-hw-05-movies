@@ -1,9 +1,10 @@
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { PropagateLoader } from 'react-spinners';
 import { handleRequestById } from 'components/api_request';
-import { useEffect, useRef, useState, Suspense } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Suspense } from 'react';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 import './MovieDetails.scss';
 
 export default function MovieDetails() {
@@ -33,7 +34,7 @@ export default function MovieDetails() {
       <NavLink className="backButton" to={backLinkLocation.current}>
         <span>{'<-'}</span> <span>Go back</span>
       </NavLink>
-      <div>
+      <div className="movieContent">
         {movieImage && (
           <img className="moviePoster" src={movieImage} alt={movie.title} />
         )}
@@ -49,7 +50,7 @@ export default function MovieDetails() {
           <h3>Overview</h3>
           <p>{movie.overview}</p>
           <h3>Genres</h3>
-          {genres && genres}
+          <div className="genres">{genres && genres}</div>
         </div>
       </div>
       <div>

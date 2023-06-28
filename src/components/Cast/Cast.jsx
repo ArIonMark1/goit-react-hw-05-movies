@@ -36,7 +36,7 @@ export default function Cast() {
               <span className="titleInfo">Name:</span> {character.name}
             </p>
             <p className="listActors__role">
-              <span className="titleInfo">Character:</span>{' '}
+              <span className="titleInfo">Character:</span>
               {character.character}
             </p>
           </div>
