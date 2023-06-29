@@ -8,7 +8,7 @@ export default function FilteredMovieList({ request, isData, path }) {
 
   //******************************* */
   useEffect(() => {
-    console.log('request for searching: ', request);
+    // console.log('request for searching: ', request);
     if (!isData) return;
 
     const receivedData = async () => {

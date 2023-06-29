@@ -11,7 +11,7 @@ export default function Movies() {
 
   const location = useLocation();
   // ********************************
-  console.log('filter Data =>: ', filterData);
+  // console.log('filter Data =>: ', filterData);
   function onSubmitForm(evt) {
     evt.preventDefault();
     const form = evt.currentTarget;
