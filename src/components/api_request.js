@@ -51,8 +51,6 @@ export const handleMovieSearchList = async fTitle => {
 
   const request = await axios.get(BASE_URL, { params });
   // ********************************
-  // console.log('movie title from  component => : ', fTitle);
-  // ********************************
   if (request.status === 200) {
     return request.data;
   }

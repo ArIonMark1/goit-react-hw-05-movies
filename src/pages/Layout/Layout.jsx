@@ -6,20 +6,18 @@ import './Layout.scss';
 export default function Layout() {
   return (
     <>
-      <section className="header">
-        <header>
-          <nav>
-            <ul className="navigation">
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/movies">Movies</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </section>
+      <header className="header">
+        <nav>
+          <ul className="navigation">
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/movies">Movies</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
       <main className="mainBlock">
         <section className="content">

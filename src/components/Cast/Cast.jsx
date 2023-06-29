@@ -16,7 +16,13 @@ export default function Cast() {
       .catch(console.error);
   }, [movieId]);
   //
-  const characterImg = `https://image.tmdb.org/t/p/w200`;
+  if (characters.length === 0) {
+    return (
+      <div>
+        <p>We didn`t add some information about characters.</p>
+      </div>
+    );
+  }
 
   return (
     <ul className="listActors">
@@ -26,7 +32,7 @@ export default function Cast() {
             className="listActors__foto"
             src={
               character.profile_path
-                ? `${characterImg}${character.profile_path}`
+                ? `https://image.tmdb.org/t/p/w200${character.profile_path}`
                 : 'https://via.placeholder.com/200x300'
             }
             alt={character.name}

@@ -1,41 +1,14 @@
-// import { NavLink, Outlet } from 'react-router-dom';
-// import MovieList from 'components/MovieList/MovieList';
-import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { handleRequestPopular } from 'components/api_request';
+import { useLocation } from 'react-router-dom';
 import './HomePage.scss';
+import MovieList from 'components/MovieList/MovieList';
 
 export default function HomePage() {
-  const [trendMovies, setTrendMovies] = useState([]);
   const location = useLocation();
-
-  // ****************************
-  useEffect(() => {
-    const onLoadMovies = async () => {
-      await handleRequestPopular()
-        .then(reqObj => {
-          setTrendMovies(prevTrendMovies => [...reqObj.results]);
-        })
-        .catch(err => alert(err.message));
-    };
-    onLoadMovies();
-  }, []);
-  // ****************************
-
+  const status = 'trends';
   return (
     <>
       <h2>Trending today</h2>
-
-      <ul>
-        {trendMovies.map(movie => (
-          <li key={movie.id}>
-            <NavLink to={`movies/${movie.id}`} state={{ from: location }}>
-              <span>{movie.media_type}</span>:
-              <span> {movie.title ? movie.title : movie.name}</span>
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      <MovieList path={location} conponentStat={status} />
     </>
   );
 }

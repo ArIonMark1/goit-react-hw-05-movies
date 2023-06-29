@@ -1,17 +1,13 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
-import FilteredMovieList from 'components/FIlteredMovieList/FIlteredMovieList';
-import { useState } from 'react';
+import MovieList from 'components/MovieList/MovieList';
 
 export default function Movies() {
   // робота з даними інпуту
-  const [filter, setFilter] = useSearchParams(''); // ?????????????????????
+  const [filter, setFilter] = useSearchParams();
   const filterData = filter.get('movie');
-
-  const [receiveData, setReceiveData] = useState(false);
-
+  const status = 'filter';
   const location = useLocation();
   // ********************************
-  // console.log('filter Data =>: ', filterData);
   function onSubmitForm(evt) {
     evt.preventDefault();
     const form = evt.currentTarget;
@@ -19,12 +15,11 @@ export default function Movies() {
 
     const params = inputData === '' ? {} : { movie: inputData.toLowerCase() };
     setFilter(params);
-    setReceiveData(true);
+    // setReceiveData(true);
     form.reset();
   }
 
   // ********************************
-
   return (
     <>
       <form onSubmit={onSubmitForm}>
@@ -37,11 +32,7 @@ export default function Movies() {
         <button type="submit">Search</button>
       </form>
 
-      <FilteredMovieList
-        request={filterData}
-        isData={receiveData}
-        path={location}
-      />
+      <MovieList request={filterData} conponentStat={status} path={location} />
     </>
   );
 }
