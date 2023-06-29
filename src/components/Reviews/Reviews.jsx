@@ -1,7 +1,6 @@
 import { handleMovieReview } from 'components/api_request';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PropagateLoader from 'react-spinners/PropagateLoader';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Review.scss';
