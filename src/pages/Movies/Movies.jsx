@@ -4,11 +4,14 @@ import { useState } from 'react';
 
 export default function Movies() {
   // робота з даними інпуту
-  const [filter, setFilter] = useSearchParams('');
+  const [filter, setFilter] = useSearchParams(''); // ?????????????????????
+  const filterData = filter.get('movie');
+
   const [receiveData, setReceiveData] = useState(false);
 
   const location = useLocation();
   // ********************************
+  console.log('filter Data =>: ', filterData);
   function onSubmitForm(evt) {
     evt.preventDefault();
     const form = evt.currentTarget;
@@ -19,6 +22,8 @@ export default function Movies() {
     setReceiveData(true);
     form.reset();
   }
+
+  // ********************************
 
   return (
     <>
@@ -33,7 +38,7 @@ export default function Movies() {
       </form>
 
       <FilteredMovieList
-        request={filter}
+        request={filterData}
         isData={receiveData}
         path={location}
       />

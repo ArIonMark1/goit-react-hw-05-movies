@@ -12,16 +12,19 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkLocation = useRef(location.state?.from ?? '/');
-  //
+  // ********************************
+
   useEffect(() => {
     const getMovieDetails = async () => {
       return await handleRequestById(movieId);
     };
+
     getMovieDetails()
       .then(receiveData => setMovie(prevMovie => ({ ...receiveData })))
       .catch(err => alert(err.message));
   }, [movieId]);
-  //
+
+  // ********************************
   const movieImage = movie.poster_path
     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
     : `https://via.placeholder.com/200x300`;

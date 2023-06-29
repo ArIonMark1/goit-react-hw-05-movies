@@ -28,6 +28,10 @@ export const handleRequestById = async id => {
       api_key: API_KEY,
     },
   });
+  // // ********************************
+  // console.log('movieId from  component => : ', id);
+  // console.log('movieId =>: ', request);
+  // // ********************************
   if (request.status === 200) {
     return request.data;
   }
@@ -42,10 +46,13 @@ export const handleMovieSearchList = async fTitle => {
   const params = {
     api_key: API_KEY,
     query: `${fTitle}`,
-    // page: 1,
+    page: 1,
   };
 
   const request = await axios.get(BASE_URL, { params });
+  // ********************************
+  console.log('movie title from  component => : ', fTitle);
+  // ********************************
   if (request.status === 200) {
     return request.data;
   }
