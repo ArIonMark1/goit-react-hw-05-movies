@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/255.ae89974b.chunk.css","mappings":"AAAA,YACI","sources":["components/Reviews/Review.scss"],"sourcesContent":[".reviewList {\n    text-align: left;\n}"],"names":[],"sourceRoot":""}
